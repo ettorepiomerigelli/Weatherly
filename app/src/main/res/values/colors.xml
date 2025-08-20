@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="cream">#FFF5F5DC</color>
+    <color name="gray">#BDBDBD</color>
+    <color name="lightGray">#D3D3D3</color>
+    <color name="logoBackground">#9BD8FB</color>
+
+
+    <!-- Background di default -->
+    <color name="defaultBackground">#E0F7FA</color> <!-- azzurro chiarissimo -->
+
+    <!-- Colore dei bottoni -->
+    <color name="buttonColor">#0288D1</color> <!-- blu acceso -->
+
+    <!-- Colori testuali di default -->
+    <color name="textPrimary">#FFFFFF</color> <!-- bianco -->
+    <color name="textSecondary">#B0BEC5</color> <!-- grigio chiaro -->
+</resources>

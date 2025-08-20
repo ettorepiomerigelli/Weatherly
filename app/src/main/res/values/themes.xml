@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Weatherly" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Colore della status bar -->
+        <item name="android:statusBarColor">#FDF7FE</item>
+
+        <!-- Se il tuo buttonColor è chiaro, lascia true (icone scure).
+             Se è scuro, metti false (icone bianche). -->
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.Weatherly" parent="Base.Theme.Weatherly" />
+</resources>
