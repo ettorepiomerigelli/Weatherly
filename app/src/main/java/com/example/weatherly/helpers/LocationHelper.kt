@@ -17,7 +17,9 @@ class LocationHelper(context: Context) {
     suspend fun getLastLocation(): Location? = suspendCancellableCoroutine { cont ->
         val listener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
-                cont.resume(location)
+                if (cont.isActive) {
+                    cont.resume(location)
+                }
                 locationManager.removeUpdates(this)
             }
 
@@ -26,11 +28,23 @@ class LocationHelper(context: Context) {
             override fun onProviderDisabled(provider: String) {}
         }
 
-        // Chiediamo l'ultima posizione dal provider GPS
         try {
-            locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, listener, null)
+            // 1️⃣ Proviamo prima col GPS
+            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, listener, null)
+            }
+            // 2️⃣ Se GPS non disponibile → fallback su rete
+            else if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+                locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, listener, null)
+            }
+            // 3️⃣ Se nessuno dei due provider disponibile → errore
+            else {
+                cont.resume(null)
+            }
         } catch (e: Exception) {
-            cont.resumeWithException(e)
+            if (cont.isActive) {
+                cont.resumeWithException(e)
+            }
         }
     }
 }

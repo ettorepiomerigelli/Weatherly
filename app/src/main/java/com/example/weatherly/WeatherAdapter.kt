@@ -32,7 +32,7 @@ class WeatherAdapter(private var weatherList: List<WeatherData>) :
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         val weather = weatherList[position]
         holder.tvCity.text = weather.city
-        holder.tvTemp.text = "${weather.temperature} °C"
+        holder.tvTemp.text = "${weather.temperature.toInt()} °C"
         holder.tvDesc.text = translateDescription(weather.description)
 
         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())

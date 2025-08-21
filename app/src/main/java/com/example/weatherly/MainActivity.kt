@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
 
                             // Aggiornamento UI
                             tvCity.text = city
-                            tvTemp.text = "${temp}°C"
+                            tvTemp.text = "${temp.toInt()}°C"
                             tvDescription.text = "$translatedDesc\n$funnyComment"
                             tvDescription.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
 
